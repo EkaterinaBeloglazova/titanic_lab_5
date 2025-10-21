@@ -85,3 +85,25 @@ st.dataframe(details.style.format({
     'Процент выживших (%)': '{:.2f}%'
 }).apply(lambda x: ['background-color: #f0f8ff' if x.name % 2 == 0 else 'background-color: #ffffff' for _ in x], axis=1))
 
+
+def calculate_survival_rates(df, pclass):
+    df = df.dropna(subset=['Age'])
+    df_class = df[df['Pclass'] == pclass]
+    young = df_class[df_class['Age'] < 30]
+    old = df_class[df_class['Age'] > 60]
+    
+    def survival_rate(group):
+        if len(group) == 0:
+            return 0.0, 0
+        rate = (group['Survived'].sum() / len(group)) * 100
+        return round(rate, 2), len(group)
+    
+    young_rate, young_count = survival_rate(young)
+    old_rate, old_count = survival_rate(old)
+    
+    return {
+        'young_rate': young_rate,
+        'young_count': young_count,
+        'old_rate': old_rate,
+        'old_count': old_count
+    }
