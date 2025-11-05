@@ -1,6 +1,7 @@
-import pytest
 import pandas as pd
 from titanic_analysis import calculate_survival_rates  
+
+
 # Тест 1: Обычный случай с данными
 def test_calculate_survival_rates_normal():
     data = {
@@ -18,6 +19,7 @@ def test_calculate_survival_rates_normal():
     assert result['old_rate'] == 50.0
     assert result['old_count'] == 2
 
+
 # Тест 2: Нет пожилых пассажиров в классе
 def test_calculate_survival_rates_no_old():
     data = {
@@ -32,6 +34,7 @@ def test_calculate_survival_rates_no_old():
     assert result['young_count'] == 3
     assert result['old_rate'] == 0.0
     assert result['old_count'] == 0
+
 
 # Тест 3: Пустой датафрейм после фильтрации по классу
 def test_calculate_survival_rates_empty_class():
@@ -48,7 +51,8 @@ def test_calculate_survival_rates_empty_class():
     assert result['old_rate'] == 0.0
     assert result['old_count'] == 0
 
-#Тест 4: Пропущенные значения в Age (должны игнорироваться)
+
+# Тест 4: Пропущенные значения в Age (должны игнорироваться)
 def test_calculate_survival_rates_with_nan_age():
     data = {
         'Pclass': [1, 1, 1],

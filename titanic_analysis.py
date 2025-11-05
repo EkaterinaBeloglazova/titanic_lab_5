@@ -1,14 +1,11 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-#@st.cache_data
 def load_data():
     df = pd.read_csv("data.csv")
     return df
 
+
 df = load_data()
-
-
 # --- Настройка страницы ---
 st.set_page_config(page_title="Анализ выживаемости по классу", layout="centered")
 
@@ -83,7 +80,9 @@ details = pd.DataFrame({
 st.dataframe(details.style.format({
     'Количество': '{:,.0f}',
     'Процент выживших (%)': '{:.2f}%'
-}).apply(lambda x: ['background-color: #f0f8ff' if x.name % 2 == 0 else 'background-color: #ffffff' for _ in x], axis=1))
+}).apply(lambda x: [
+    'background-color: #f0f8ff' if x.name % 2 == 0 else 'background-color: #ffffff'
+    for _ in x], axis=1))
 
 
 def calculate_survival_rates(df, pclass):
