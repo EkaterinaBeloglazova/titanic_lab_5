@@ -10,8 +10,7 @@ def test_calculate_survival_rates_normal():
         'Survived': [1, 0, 1, 0, 1]
     }
     df = pd.DataFrame(data)
-    result = calculate_survival_rates(df, pclass=1)
-    
+    result = calculate_survival_rates(df, pclass=1) 
     # Молодые: [25, 28] → 1 выжил из 2 → 50%
     # Пожилые: [65, 70] → 1 выжил из 2 → 50%
     assert result['young_rate'] == 50.0
@@ -29,7 +28,6 @@ def test_calculate_survival_rates_no_old():
     }
     df = pd.DataFrame(data)
     result = calculate_survival_rates(df, pclass=3)
-    
     assert result['young_rate'] == 66.67  # 2 из 3
     assert result['young_count'] == 3
     assert result['old_rate'] == 0.0
@@ -45,7 +43,6 @@ def test_calculate_survival_rates_empty_class():
     }
     df = pd.DataFrame(data)
     result = calculate_survival_rates(df, pclass=1)  # класс 1 отсутствует
-    
     assert result['young_rate'] == 0.0
     assert result['young_count'] == 0
     assert result['old_rate'] == 0.0
@@ -61,7 +58,6 @@ def test_calculate_survival_rates_with_nan_age():
     }
     df = pd.DataFrame(data)
     result = calculate_survival_rates(df, pclass=1)
-    
     # После dropna остаются только 25 и 65
     assert result['young_count'] == 1
     assert result['young_rate'] == 100.0
