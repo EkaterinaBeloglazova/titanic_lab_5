@@ -10,7 +10,7 @@ def test_calculate_survival_rates_normal():
         'Survived': [1, 0, 1, 0, 1]
     }
     df = pd.DataFrame(data)
-    result = calculate_survival_rates(df, pclass=1) 
+    result = calculate_survival_rates(df, pclass=1)
     # Молодые: [25, 28] → 1 выжил из 2 → 50%
     # Пожилые: [65, 70] → 1 выжил из 2 → 50%
     assert result['young_rate'] == 50.0

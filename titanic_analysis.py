@@ -93,6 +93,7 @@ def calculate_survival_rates(df, pclass):
     df_class = df[df['Pclass'] == pclass]
     young = df_class[df_class['Age'] < 30]
     old = df_class[df_class['Age'] > 60]
+
     def survival_rate(group):
         if len(group) == 0:
             return 0.0, 0
