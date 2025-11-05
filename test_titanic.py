@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from streamlit1 import calculate_survival_rates  
+from titanic_analysis import calculate_survival_rates  
 # Тест 1: Обычный случай с данными
 def test_calculate_survival_rates_normal():
     data = {
