@@ -1,5 +1,5 @@
 import pandas as pd
-from titanic_analysis import calculate_survival_rates  
+from titanic_analysis import calculate_survival_rates
 
 
 # Тест 1: Обычный случай с данными
